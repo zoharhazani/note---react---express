@@ -1,38 +1,160 @@
-.App {
+.note{
+  background-color: #fef68a;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  max-width: 300px;
+  max-height: 300px;
+}
+.notes-list{
+  
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+}
+
+.note.new{
+  background-color:#8ededb;
+}
+
+textarea{
+  border: none;
+  resize: none;
+  background-color:#8ededb;
+  
+}
+textarea:focus{
+  outline: none;
+  cursor: pointer;
+
+}
+.save{
+  background-color:aliceblue;
+  border:none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px
+}
+.save:hover{
+  background-color:black;
+  color: white;
+}
+.note-footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container{
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.inputTitle{
+  border: none;
+  resize: none;
+  background-color:#8ededb;
+}
+
+.inputTitle:focus{
+  outline: none;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  width: 120px;
+}
+.inputTitle:hover{
+  outline: none;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  width: 120px;
+}
+
+.delete-icon{
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.inputTxt{
+  background-color: transparent;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+	border-color: #7aa7c7;
+	outline: 0;
+	height: 30px;
+	width: 275px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.containerLogin{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 10%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.btnLogin{
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
+  text-align: center;
+  width: 80px;
+  height: 40px;
+
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+
 }
 
-.App-link {
-  color: #61dafb;
+
+.btnLogin:hover,
+.btnLogin:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btnLogin:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
 }
+
+.btnLogin:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
+.labelLogin{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
+}
+

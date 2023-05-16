@@ -3,7 +3,6 @@ import { useState } from "react";
 const AddNote = ({handleAddNode}) => {
     const [noteText,setNoteText] = useState("");
     const [noteTitle,setNoteTitle]=useState("");
-    const [enable,setEnable]=useState("");
 
     const handleSaveClick = ()=> {
         if(noteText.trim().length > 0)

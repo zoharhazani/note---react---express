@@ -1,52 +1,49 @@
-.note{
+.note {
   background-color: #fef68a;
   border-radius: 10px;
   padding: 1rem;
   min-height: 170px;
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   max-width: 300px;
   max-height: 300px;
 }
-.notes-list{
-  
+.notes-list {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-.note.new{
-  background-color:#8ededb;
+.note.new {
+  background-color: #8ededb;
 }
 
-textarea{
+textarea {
   border: none;
   resize: none;
-  background-color:#8ededb;
-  
+  background-color: #8ededb;
 }
-textarea:focus{
+textarea:focus {
   outline: none;
   cursor: pointer;
-
 }
-.save{
-  background-color:aliceblue;
-  border:none;
+.save {
+  background-color: aliceblue;
+  border: none;
   border-radius: 15px;
-  padding: 5px 10px 5px 10px
+  padding: 5px 10px 5px 10px;
 }
-.save:hover{
-  background-color:black;
+.save:hover {
+  background-color: black;
   color: white;
 }
-.note-footer{
+.note-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.container{
+.container {
   max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
@@ -55,46 +52,46 @@ textarea:focus{
   padding-left: 15px;
 }
 
-.inputTitle{
+.inputTitle {
   border: none;
   resize: none;
-  background-color:#8ededb;
+  background-color: #8ededb;
 }
 
-.inputTitle:focus{
+.inputTitle:focus {
   outline: none;
   cursor: pointer;
   border-bottom: 1px solid black;
   width: 120px;
 }
-.inputTitle:hover{
+.inputTitle:hover {
   outline: none;
   cursor: pointer;
   border-bottom: 1px solid black;
   width: 120px;
 }
 
-.delete-icon{
+.delete-icon {
   cursor: pointer;
   width: 25px;
   height: 25px;
 }
 
-.inputTxt{
+.inputTxt {
   background-color: transparent;
-	border-style: solid;
-	border-width: 0px 0px 1px 0px;
-	border-color: #7aa7c7;
-	outline: 0;
-	height: 30px;
-	width: 275px;
+  border-style: solid;
+  border-width: 0px 0px 1px 0px;
+  border-color: #7aa7c7;
+  outline: 0;
+  height: 30px;
+  width: 275px;
   text-align: center;
   align-items: center;
   justify-content: center;
   display: flex;
 }
 
-.containerLogin{
+.containerLogin {
   align-items: center;
   justify-content: center;
   display: flex;
@@ -102,29 +99,29 @@ textarea:focus{
   text-align: center;
 }
 
-.btnLogin{
+.btnLogin {
   align-items: center;
   justify-content: center;
   display: flex;
   text-align: center;
   width: 80px;
   height: 40px;
-
   background-color: #e1ecf4;
   border-radius: 3px;
   border: 1px solid #7aa7c7;
-  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
   box-sizing: border-box;
   color: #39739d;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+    sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.15385;
   margin: 0;
   outline: none;
-  padding: 8px .8em;
+  padding: 8px 0.8em;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -133,9 +130,7 @@ textarea:focus{
   touch-action: manipulation;
   vertical-align: baseline;
   white-space: nowrap;
-
 }
-
 
 .btnLogin:hover,
 .btnLogin:focus {
@@ -144,7 +139,7 @@ textarea:focus{
 }
 
 .btnLogin:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
 }
 
 .btnLogin:active {
@@ -153,8 +148,64 @@ textarea:focus{
   color: #2c5777;
 }
 
-.labelLogin{
+.labelLogin {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
- 
 }
 
+.login-btn {
+  background: linear-gradient(to bottom right, #dbcb39, #96e1f8);
+  border: 0;
+  border-radius: 12px;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.login-btn:not([disabled]):focus {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(213, 219, 126, 0.5),
+    0.125rem 0.125rem 1rem rgba(244, 255, 90, 0.5);
+}
+
+.login-btn:not([disabled]):hover {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(213, 219, 126, 0.5),
+    0.125rem 0.125rem 1rem rgba(244, 255, 90, 0.5);
+}
+
+.container-home {
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5%;
+  padding-right: 15px;
+  padding-left: 15px;
+  align-items: center;
+}
+
+.footer-home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 47%;
+}
+
+.logout-btn {
+  border: none;
+  cursor: pointer;
+}

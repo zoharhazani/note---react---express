@@ -1,14 +1,25 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import "App.css";
-import NotesList from "Components/NoteList";
-import AddNote from "Components/AddNote";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+import "App.css";
+import AddNote from "Components/AddNote";
+import EditNote from "Components/EditNote";
 
 function Edit() {
   const [notes, setNotes] = useState(null);
   const navigate = useNavigate();
+
+  function setNote(note) {
+    setNotes((oldNotes) =>
+      oldNotes.map((element) => {
+        if (element.id != note.id) {
+          return element;
+        }
+        return note;
+      })
+    );
+  }
 
   const addNote = (text, title) => {
     const date = new Date();
@@ -51,7 +62,21 @@ function Edit() {
       </button>
       <div className="container">
         <h1>Notes</h1>
-        <NotesList notes={notes ?? []} handleDeleteNote={deleteNote} />
+        <div className="notes-list">
+          {notes?.map((note) => {
+            return (
+              <EditNote
+                key={note.id}
+                id={note.id}
+                text={note.text}
+                title={note.title}
+                date={note.date}
+                handleDeleteNote={deleteNote}
+                setNote={setNote}
+              />
+            );
+          })}
+        </div>
         <br />
         <AddNote handleAddNode={addNote} />
       </div>

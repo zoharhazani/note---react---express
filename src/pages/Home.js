@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "../App.css";
-import NotesList from "../Components/NoteList";
 import { useNavigate } from "react-router-dom";
 import Note from "Components/Note";
 
@@ -23,30 +22,32 @@ function Home() {
   }, []);
 
   return (
-    <div className="container-home">
-      <h1>Notes</h1>
-      <div className="notes-list">
-        {notes.map((note) => {
-          return (
-            <Note
-              key={note.id}
-              id={note.id}
-              text={note.text}
-              title={note.title}
-              date={note.date}
-              handleDeleteNote={deleteNote}
-              isActive={false}
-            />
-          );
-        })}
+    <>
+      <div className="container">
+        <h1>Notes</h1>
+        <div className="notes-list">
+          {notes.map((note) => {
+            return (
+              <Note
+                key={note.id}
+                id={note.id}
+                text={note.text}
+                title={note.title}
+                date={note.date}
+                handleDeleteNote={deleteNote}
+                isActive={false}
+              />
+            );
+          })}
+        </div>
       </div>
-      <br />
-      <div className="footer-home">
-        <button className="login-btn" onClick={() => navigate("/Login")}>
-          Login
-        </button>
-      </div>
-    </div>
+      <button
+        className="login-btn position-loginbtn-home"
+        onClick={() => navigate("/Login")}
+      >
+        Login
+      </button>
+    </>
   );
 }
 

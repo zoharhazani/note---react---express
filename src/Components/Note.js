@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import AddNote from "./AddNote";
 
 const Note = ({ id, text, date, title }) => {

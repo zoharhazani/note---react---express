@@ -21,22 +21,25 @@ function Edit() {
     );
   }
 
-  const addNote = (text, title) => {
+  const handleAddNote = (text, title) => {
+    // console.log({ text, title }, "handleAddNote");
     const date = new Date();
     const newNote = {
       id: nanoid(),
       text: text,
       title: title,
-      date: date.toLocaleDateString(),
+      date: date.toLocaleString(),
     };
 
     const newNotes = [...(notes ?? []), newNote];
+
     setNotes(newNotes);
     return true;
   };
 
   const deleteNote = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
+
     setNotes(newNotes);
     return true;
   };
@@ -51,19 +54,25 @@ function Edit() {
   useEffect(() => {
     // if i already have notes
     if (notes !== null) {
+      // console.log({ notes }, "current notes");
       localStorage.setItem("notes", JSON.stringify(notes));
     }
   }, [notes]);
 
   return (
     <>
-      <button className="logout-btn" onClick={() => navigate("/")}>
+      <button
+        className="login-btn position-loginbtn-home"
+        onClick={() => navigate("/")}
+      >
         Logout
       </button>
       <div className="container">
         <h1>Notes</h1>
-        <div className="notes-list">
+        <div className="notes-list ">
           {notes?.map((note) => {
+            console.log({ text: note.text, title: note.title });
+
             return (
               <EditNote
                 key={note.id}
@@ -76,9 +85,9 @@ function Edit() {
               />
             );
           })}
+          <AddNote handleAddNode={handleAddNote} />
         </div>
         <br />
-        <AddNote handleAddNode={addNote} />
       </div>
     </>
   );

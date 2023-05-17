@@ -8,9 +8,11 @@
   justify-content: space-between;
   max-width: 300px;
   max-height: 300px;
+  min-width: 300px;
+  margin: 5px;
+  float: left;
 }
 .notes-list {
-  display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
@@ -26,7 +28,6 @@ textarea {
 }
 textarea:focus {
   outline: none;
-  cursor: pointer;
 }
 .save {
   background-color: aliceblue;
@@ -61,13 +62,11 @@ textarea:focus {
 
 .inputTitle:focus {
   outline: none;
-  cursor: pointer;
   border-bottom: 1px solid black;
   width: 120px;
 }
 .inputTitle:hover {
   outline: none;
-  cursor: pointer;
   border-bottom: 1px solid black;
   width: 120px;
 }
@@ -79,17 +78,26 @@ textarea:focus {
 }
 
 .inputTxt {
-  background-color: transparent;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  border-color: #7aa7c7;
-  outline: 0;
-  height: 30px;
-  width: 275px;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  display: flex;
+  font-size: 14px;
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+    background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  background: #dee1e2;
+  display: block;
+  height: 36px;
+  width: 300px;
+}
+.inputTxt:hover {
+  border-color: #ccc;
+}
+
+.inputTxt:focus {
+  border-color: #9147ff;
+  background: #fff;
 }
 
 .containerLogin {
@@ -98,55 +106,6 @@ textarea:focus {
   display: flex;
   margin-top: 10%;
   text-align: center;
-}
-
-.btnLogin {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  width: 80px;
-  height: 40px;
-  background-color: #e1ecf4;
-  border-radius: 3px;
-  border: 1px solid #7aa7c7;
-  box-shadow: rgba(255, 255, 255, 0.7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: #39739d;
-  cursor: pointer;
-  display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
-    sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.15385;
-  margin: 0;
-  outline: none;
-  padding: 8px 0.8em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
-}
-
-.btnLogin:hover,
-.btnLogin:focus {
-  background-color: #b3d3ea;
-  color: #2c5777;
-}
-
-.btnLogin:focus {
-  box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-}
-
-.btnLogin:active {
-  background-color: #a0c7e4;
-  box-shadow: none;
-  color: #2c5777;
 }
 
 .labelLogin {
@@ -159,7 +118,6 @@ textarea:focus {
   border-radius: 12px;
   color: black;
   cursor: pointer;
-  display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
   font-size: 16px;
@@ -177,36 +135,30 @@ textarea:focus {
   align-items: center;
 }
 
-.login-btn:not([disabled]):focus {
+.position-loginbtn-home {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+}
+
+.login-btn-home:not([disabled]):focus {
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
     -0.125rem -0.125rem 1rem rgba(213, 219, 126, 0.5),
     0.125rem 0.125rem 1rem rgba(244, 255, 90, 0.5);
 }
 
-.login-btn:not([disabled]):hover {
+.login-btn-home:not([disabled]):hover {
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
     -0.125rem -0.125rem 1rem rgba(213, 219, 126, 0.5),
     0.125rem 0.125rem 1rem rgba(244, 255, 90, 0.5);
-}
-
-.container-home {
-  max-width: 1400px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 5%;
-  padding-right: 15px;
-  padding-left: 15px;
-  align-items: center;
-}
-
-.footer-home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 47%;
 }
 
 .logout-btn {
   border: none;
   cursor: pointer;
+}
+
+.size-btn-login {
+  width: 150px;
+  height: 50px;
 }

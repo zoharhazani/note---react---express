@@ -54,7 +54,6 @@ function Edit() {
   useEffect(() => {
     // if i already have notes
     if (notes !== null) {
-      // console.log({ notes }, "current notes");
       localStorage.setItem("notes", JSON.stringify(notes));
     }
   }, [notes]);

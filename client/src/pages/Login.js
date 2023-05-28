@@ -11,26 +11,43 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    var inputUserName = userName;
-    var inputPassword = password;
+    async function sendDetailsToDB() {
+      const userDetails = {
+        username: userName,
+        password: password,
+      };
+      try {
+        const response = await fetch("/api/getUserDetail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userDetails),
+        });
 
-    if (!inputValidation(inputUserName, inputPassword)) {
-      alert("please enter correct user name or password");
-      setUserName("");
-      setPasswords("");
-    } else {
-      navigate("/Edit");
+        if (response.ok) {
+          const isValid = await response.json();
+          if (isValid) {
+            navigate("/Edit");
+          } else {
+            alert("please enter correct user name or password");
+            setUserName("");
+            setPasswords("");
+          }
+          console.log("Data sent successfully");
+        } else {
+          console.error("Server error:", response.status);
+        }
+      } catch (error) {
+        console.error("Network error:", error);
+      }
     }
+
+    sendDetailsToDB();
 
     document.getElementById("user-name").value = "";
     document.getElementById("password").value = "";
   };
-  function inputValidation(inputUserName, inputPassword) {
-    if (inputUserName != "admin" || inputPassword != "123") {
-      return false;
-    }
-    return true;
-  }
 
   return (
     <div className="containerLogin">

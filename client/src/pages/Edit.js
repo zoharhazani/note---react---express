@@ -65,12 +65,14 @@ function Edit() {
   // send the notes to the server and save them in the DB
   useEffect(() => {
     const sendData = async () => {
+      const token = localStorage.getItem("token");
       if (notes !== null) {
         try {
           const response = await fetch("/api/saveNotes", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": token,
             },
             body: JSON.stringify(notes),
           });

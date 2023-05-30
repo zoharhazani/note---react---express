@@ -1,6 +1,5 @@
 import "App.css";
 import { useState } from "react";
-import Edit from "./Edit";
 import { useNavigate } from "react-router-dom";
 function Login() {
   const [userName, setUserName] = useState("");
@@ -9,45 +8,55 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
 
-    async function sendDetailsToDB() {
-      const userDetails = {
-        username: userName,
-        password: password,
-      };
-      try {
-        const response = await fetch("/api/getUserDetail", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userDetails),
-        });
-
-        if (response.ok) {
-          const isValid = await response.json();
-          if (isValid) {
-            navigate("/Edit");
-          } else {
-            alert("please enter correct user name or password");
-            setUserName("");
-            setPasswords("");
-          }
-          console.log("Data sent successfully");
-        } else {
-          console.error("Server error:", response.status);
-        }
-      } catch (error) {
-        console.error("Network error:", error);
-      }
-    }
-
-    sendDetailsToDB();
+    handleLogin();
 
     document.getElementById("user-name").value = "";
     document.getElementById("password").value = "";
   };
+
+  async function handleLogin() {
+
+    const userDetails = {
+      username: userName,
+      password: password,
+    };
+
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      });
+
+      if (response.ok) {
+
+        const data = await response.json();
+
+        if (data.isValid) {
+
+          //handle saving token to the local storage 
+          var token = data.token;
+          localStorage.setItem("token", token);
+
+          navigate("/Edit");
+        } else {
+          alert("please enter correct user name or password");
+          setUserName("");
+          setPasswords("");
+        }
+        console.log("Data sent successfully");
+      } else {
+        console.error("Server error:", response.status);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  }
 
   return (
     <div className="containerLogin">

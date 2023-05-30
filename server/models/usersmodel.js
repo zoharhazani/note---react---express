@@ -8,7 +8,7 @@ const usersSchema = new mongoose.Schema({
   password: {
     type: String,
     require: true,
-  },
+  }
 });
 
 const User = mongoose.model("user", usersSchema);

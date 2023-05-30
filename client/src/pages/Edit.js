@@ -13,7 +13,7 @@ function Edit() {
   function setNote(note) {
     setNotes((oldNotes) =>
       oldNotes.map((element) => {
-        if (element.id != note.id) {
+        if (element.id !== note.id) {
           return element;
         }
         return note;

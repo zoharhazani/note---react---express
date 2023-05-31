@@ -10,18 +10,20 @@ function Edit() {
   const [notes, setNotes] = useState(null);
   const navigate = useNavigate();
 
-  // function setNote(note) {
-  //   setNotes((oldNotes) =>
-  //     oldNotes.map((element) => {
-  //       if (element.id !== note.id) {
-  //         return element;
-  //       }
-  //       return note;
-  //     })
-  //   );
-  // }
+  // set the note onChange 
+  function setNote(note) {
+    setNotes((oldNotes) =>
+      oldNotes.map((element) => {
+        if (element.id !== note.id) {
+          return element;
+        }
+        return note;
+      })
+    );
+  }
 
-  async function setNote(note) {
+  // set the note onBlur 
+  async function setNoteToDB(note) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`/api/updateNote/`, {
@@ -61,6 +63,7 @@ function Edit() {
     }
   }
 
+  // handle add note 
   const handleAddNote = async (text, title) => {
     const date = new Date();
     const newNote = {
@@ -105,29 +108,15 @@ function Edit() {
     }
   };
 
-  // const handleAddNote = (text, title) => {
-  //   const date = new Date();
-  //   const newNote = {
-  //     id: nanoid(),
-  //     text: text,
-  //     title: title,
-  //     date: date.toLocaleString(),
-  //   };
-
-  //   const newNotes = [...(notes ?? []), newNote];
-  //   setNotes(newNotes);
-  //   return true;
-  // };
-
+  // handle delete note 
   const deleteNote = async (id) => {
-    console.log("here in delete node client");
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(`/api/deleteNote/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          Authorization: token, // Include the JWT token in the request headers
+          Authorization: token,
         },
       });
 
@@ -154,17 +143,7 @@ function Edit() {
     }
   };
 
-
-  // const deleteNote = (id) => {
-  //   const newNotes = notes.filter((note) => note.id !== id);
-  //   setNotes(newNotes);
-
-  //   return true;
-  // };
-
-
   // get the notes in the first time
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -181,37 +160,10 @@ function Edit() {
     };
 
     fetchData();
+    return
   }, []);
 
-  // // send the notes to the server and save them in the DB
-  // useEffect(() => {
-  //   const sendData = async () => {
-  //     const token = localStorage.getItem("token");
-  //     if (notes !== null) {
-  //       try {
-  //         const response = await fetch("/api/saveNotes", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //             "Authorization": token,
-  //           },
-  //           body: JSON.stringify(notes),
-  //         });
-
-  //         if (response.ok) {
-  //           console.log("Data sent successfully");
-  //         } else {
-  //           console.error("Server error:", response.status);
-  //         }
-  //       } catch (error) {
-  //         console.error("Network error:", error);
-  //       }
-  //     }
-  //   };
-
-  //   sendData();
-  // }, [notes]);
-
+  // handle log out from the app 
   const handleLogout = () => {
     // Delete the token from local storage
     localStorage.removeItem("token");
@@ -239,6 +191,7 @@ function Edit() {
                 date={note.date}
                 handleDeleteNote={deleteNote}
                 setNote={setNote}
+                setNoteToDB={setNoteToDB}
               />
             );
           })}

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Note = require("../../models/notesmodel");
+const Note = require("../../models/note");
 
 router.delete("/:noteId", async (req, res) => {
     try {

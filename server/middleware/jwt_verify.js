@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 const verifyToken = async (req, res, next) => {
     const token = req.headers['authorization'];
-    console.log({ token });
     const secretKey = "zohar the queen";
     if (!token) {
         return res.forbidden({ message: 'A token is required for authentication' });

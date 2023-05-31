@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { createHash } = require("crypto");
-const User = require("../models/usersmodel");
+const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const generateJWTtoken = require("../Utils/generateToken");
 
@@ -25,7 +25,6 @@ router.post("/", async (req, res) => {
 
 
   } catch (error) {
-    console.log(error);
     res.status(400).json({ error: error.message });
   }
 });

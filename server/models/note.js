@@ -1,4 +1,4 @@
-const mongoose = require("../mongooseConnector");
+const mongoose = require("../Utils/mongooseConnector");
 
 const notesSchema = new mongoose.Schema({
   id: {

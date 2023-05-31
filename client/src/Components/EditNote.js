@@ -1,6 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
 
-const EditNote = ({ id, text, date, title, handleDeleteNote, setNote }) => {
+const EditNote = ({ id, text, date, title, handleDeleteNote, setNote, setNoteToDB }) => {
   return (
     <div className="note new">
       <input
@@ -10,6 +10,14 @@ const EditNote = ({ id, text, date, title, handleDeleteNote, setNote }) => {
         value={title}
         onChange={(e) =>
           setNote({
+            id,
+            title: e.target.value,
+            date: new Date().toLocaleString(),
+            text,
+          })
+        }
+        onBlur={(e) =>
+          setNoteToDB({
             id,
             title: e.target.value,
             date: new Date().toLocaleString(),
@@ -29,6 +37,14 @@ const EditNote = ({ id, text, date, title, handleDeleteNote, setNote }) => {
             text: e.target.value,
             date: new Date().toLocaleString(),
             title,
+          })
+        }
+        onBlur={(e) =>
+          setNoteToDB({
+            id,
+            title,
+            date: new Date().toLocaleString(),
+            text: e.target.value,
           })
         }
       ></textarea>

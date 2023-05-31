@@ -8,10 +8,6 @@ function Home() {
   const [notes, setNotes] = useState([]);
   const navigate = useNavigate();
 
-  const deleteNote = (id) => {
-    return false;
-  };
-
   // get the notes in the first time
   useEffect(() => {
     const fetchData = async () => {
@@ -44,8 +40,6 @@ function Home() {
                 text={note.text}
                 title={note.title}
                 date={note.date}
-                handleDeleteNote={deleteNote}
-                isActive={false}
               />
             );
           })}

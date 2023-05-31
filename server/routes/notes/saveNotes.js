@@ -1,24 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Note = require("../models/notesmodel");
+const Note = require("../../models/notesmodel");
 
-/*
-router.post("/", async (req, res) => {
-  try {
-    const newNote = new Note({
-      title: req.body.Note.title,
-      id: req.body.Note.id,
-      text: req.body.Note.text,
-      date: req.body.Note.date,
-    });
-    console.log(newNote);
-    await newNote.save();
-    res.sendStatus(200);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-*/
 
 router.post("/", async (req, res) => {
   try {

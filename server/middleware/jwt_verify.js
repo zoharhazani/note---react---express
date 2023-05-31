@@ -9,11 +9,14 @@ const verifyToken = async (req, res, next) => {
     }
     try {
         jwt.verify(token, secretKey);
+        return next();
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        if (error.name === 'TokenExpiredError') {
+            return res.status(401).json({ error: error.message });
+        }
+        return res.status(500).json({ error: error.message });
     }
-    return next();
 };
 
 module.exports = verifyToken;

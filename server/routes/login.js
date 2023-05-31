@@ -3,6 +3,7 @@ const router = express.Router();
 const { createHash } = require("crypto");
 const User = require("../models/usersmodel");
 const jwt = require("jsonwebtoken");
+const generateJWTtoken = require("../Utils/generateToken");
 
 router.post("/", async (req, res) => {
   try {
@@ -24,6 +25,7 @@ router.post("/", async (req, res) => {
 
 
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 });
@@ -39,15 +41,6 @@ function validateUserInput(userDetailFromDB, userDetailFromClient) {
     return false;
   }
   return true;
-}
-
-function generateJWTtoken(username, password) {
-
-  const payload = { username: username, password: password };
-  const secretKey = "zohar the queen";
-  const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
-
-  return token;
 }
 
 module.exports = router;
